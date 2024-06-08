@@ -1,0 +1,74 @@
+CompileFlags:
+    CompilationDatabase: builddir/
+    Remove: [-std=c++23]
+    Add: [
+        -std=c++2b,
+        -stdlib=libstdc++,
+        -D__cpp_concepts=202002L,
+        -Weverything,
+        -Wno-documentation-unknown-command,
+        -Wno-gnu-binary-literal,
+        -Wno-deprecated-volatile,
+        -Wno-c++98-c++11-compat-binary-literal,
+        -Wno-c++98-compat-pedantic,
+        -Wno-c++20-compat-pedantic,
+        -Wno-old-style-cast,
+        -Wno-exit-time-destructors,
+        -Wno-global-constructors,
+        -Wno-weak-vtables,
+        -Wno-shadow-field-in-constructor,
+        -Wno-padded,
+        -fsanitize=undefined
+    ]
+
+---
+Index:
+    StandardLibrary: Yes
+
+---
+Hover:
+    ShowAKA: Yes
+
+---
+Diagnostics:
+    UnusedIncludes: Strict
+
+---
+If:
+    PathMatch: [src/.*]
+  
+Diagnostics:
+    ClangTidy:
+        Add: [
+            bugprone-*,
+            clang-analyzer-*
+            cppcoreguidelines-*,
+            misc-*,
+            modernize-*,
+            portability-*,
+            performance-*,
+            readability-*,
+        ]
+
+        Remove: [
+            performance-no-int-to-ptr,
+            cppcoreguidelines-pro-type-cstyle-cast,
+            cppcoreguidelines-avoid-magic-numbers,
+            readability-magic-numbers,
+            bugprone-unchecked-optional-access,
+            cppcoreguidelines-pro-type-reinterpret-cast,
+            cppcoreguidelines-avoid-non-const-global-variables,
+            cppcoreguidelines-pro-bounds-constant-array-index,
+            cppcoreguidelines-macro-usage,
+            bugprone-easily-swappable-parameters,
+        ]
+
+---
+Diagnostics:
+    ClangTidy:
+        CheckOptions:
+            readability-identifier-naming.VariableCase: lower_case
+            readability-identifier-naming.GlobalConstantCase: UPPER_CASE
+            readability-identifier-naming.ClassCase: CamelCase
+            readability-identifier-naming.EnumCase: CamelCase
+            readability-braces-around-statements.ShortStatementLines: 1

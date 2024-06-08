@@ -1,0 +1,12 @@
+{
+    "clangd.path": "/bin/clangd",
+    "clangd.arguments": [
+        "--query-driver=/usr/sbin/c++",
+        "--background-index",
+        "--completion-style=detailed",
+        "--header-insertion=never",
+        "--log=verbose",
+        "--pretty",
+    ],
+    "mesonbuild.configureOnOpen": false
+}
